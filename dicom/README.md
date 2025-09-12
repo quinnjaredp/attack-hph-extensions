@@ -151,9 +151,9 @@ Attribution line you can copy: Extending ATT&CK: HPH DICOM PoC © Jared P. Quinn
 --------------------------------
 INTEGRITY CHECK
 
-workbench_hph_dicom.json SHA-256: 707F183C57D362F02A66540F60B2B3D5BD905F6EAD4CCE3E52692D33CF85A92A 
+workbench_hph_dicom.json SHA-256: bd4474279f96cb04cf3e4a685a4c3dff9dae47597cc6faa5e7d683403017088a 
 
-navigator_hph_dicom.json SHA-256: 9806D6285070312400E03407391947770AF16E58BEE2A8D391A66FD644F3BC74
+navigator_hph_dicom.json SHA-256: 9806d6285070312400e03407391947770af16e58bee2a8d391a66fd644f3bc74
 
 --------------------------------
 VERSION HISTORY
