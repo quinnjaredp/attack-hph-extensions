@@ -77,7 +77,7 @@ QUICK START
 		
 		- QNTK-AN1201 (Analytic)
 
-2. Make Navigator aware of the custom objects
+2. Make Navigator aware of the custom objects.
 
 	- In Navigator: Create New Layer → More options → Create from collection/STIX file, then upload workbench_hph_dicom.json.
 
