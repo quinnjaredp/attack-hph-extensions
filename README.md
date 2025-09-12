@@ -14,7 +14,7 @@ A collection of Healthcare & Public Health (HPH) extensions for MITRE ATT&CK, wi
 
 	- **Latest release:** [hph-dicom-v0.1.1](../../releases/tag/hph-dicom-v0.1.1)
 
-### 2) LS-NET (coming soon)
+### 2) LS-NET (pending)
 
 	- **Folder:** [`ls-net/`](./ls-net/) *(placeholder)*
 
