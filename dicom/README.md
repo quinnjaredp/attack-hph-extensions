@@ -105,9 +105,9 @@ In Navigator:
 
 Alternatively, edit the JSON before loading:
 
-  - macOS/Linux: sed -i '' 's#https://localhost/#https://your-host/#g' navigator_hph_dicom.json
+   - macOS/Linux: sed -i '' 's#https://localhost/#https://your-host/#g' navigator_hph_dicom.json
 
-	- Windows (PowerShell): (Get-Content navigator_hph_dicom.json) -replace 'https://localhost/','https://your-host/' | Set-Content navigator_hph_dicom.json
+   - Windows (PowerShell): (Get-Content navigator_hph_dicom.json) -replace 'https://localhost/','https://your-host/' | Set-Content navigator_hph_dicom.json
 
 --------------------------------
 HOW TO
