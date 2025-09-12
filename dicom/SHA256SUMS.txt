@@ -1,3 +1,0 @@
-bd4474279f96cb04cf3e4a685a4c3dff9dae47597cc6faa5e7d683403017088a  workbench_hph_dicom.json
-
-9806d6285070312400e03407391947770af16e58bee2a8d391a66fd644f3bc74  navigator_hph_dicom.json
