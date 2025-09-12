@@ -21,33 +21,33 @@ Workbench Collection: workbench_hph_dicom.json
 
   - Sub-Technique: Malicious Healthcare File (QNTK-T1204.121)
 	
-	- Data Source: Clinical File Telemetry (QNTK-DS1201)
+  - Data Source: Clinical File Telemetry (QNTK-DS1201)
 
-		- Analytic: Analytic 1201 (QNTK-AN1201)
+  - Analytic: Analytic 1201 (QNTK-AN1201)
 		
-		- Log Source: Healthcare File Telemetry (QNTK-LS1201)
+  - Log Source: Healthcare File Telemetry (QNTK-LS1201)
 
-		- Asset: Healthcare Imaging Workstation (QNTK-A1201)
+  - Asset: Healthcare Imaging Workstation (QNTK-A1201)
 		
-		- Campaign: Operation Code Blue (QNTK-C1201)
+  - Campaign: Operation Code Blue (QNTK-C1201)
 		
-		- Group: Wizard Spider (G0102)
-		  Note: A hypothetical relationship to QNTK-T1204.121 was added for demonstration.
+  - Group: Wizard Spider (G0102)
+	Note: A hypothetical relationship to QNTK-T1204.121 was added for demonstration.
 
-		- Software: Ryuk (S0446)
-		  Note: A hypothetical relationship to QNTK-T1204.121 was added for demonstration.
+  - Software: Ryuk (S0446)
+	Note: A hypothetical relationship to QNTK-T1204.121 was added for demonstration.
 		
-		- Mitigation: Sector-Specific File Normalization (QNTK-M1201)
+  - Mitigation: Sector-Specific File Normalization (QNTK-M1201)
 		
-		- Detection: Malicious Healthcare File - Structure Anomaly (QNTK-DET1201)
+  - Detection: Malicious Healthcare File - Structure Anomaly (QNTK-DET1201)
 
 Navigator Layer: navigator_hph_dicom.json
 
   - HPH: DICOM Layer with only the QNTK-T1204.121 visible. 
 	
-	- A default coverage score 10 (i.e., No Coverage) was applied to QNTK-T1204.121. 
+  - A default coverage score 10 (i.e., No Coverage) was applied to QNTK-T1204.121. 
 		
-	- The QNTK-T1204.121 sub-technique includes an example triage checklist and links back to the corresponding Workbench objects. 
+  - The QNTK-T1204.121 sub-technique includes an example triage checklist and links back to the corresponding Workbench objects. 
 
 --------------------------------
 MINIMUM PREREQUISITES
@@ -139,15 +139,14 @@ LICENSE
 
 This repository uses **dual licensing**:
 
-- **Content (CTI JSON, layers, docs):** Creative Commons **CC BY 4.0**  
-  See `LICENSE-CC-BY-4.0`. You **must** attribute:  
-  *“Extending ATT&CK: HPH DICOM PoC by Jared P. Quinn (https://github.com/quinnjaredp)”* and indicate changes.
+**Content (CTI JSON, layers, docs):** Creative Commons **CC BY 4.0**  
+See `LICENSE-CC-BY-4.0`. You **must** attribute:  
+*“Extending ATT&CK: HPH DICOM PoC by Jared P. Quinn (https://github.com/quinnjaredp)”* and indicate changes.
 
-- **Code/scripts (if present):** **Apache License 2.0**  
-  See `LICENSE-APACHE-2.0` and `NOTICE`. You may use, modify, and redistribute (including commercially) with preservation of notices.
+**Code/scripts (if present):** **Apache License 2.0**  
+See `LICENSE-APACHE-2.0` and `NOTICE`. You may use, modify, and redistribute (including commercially) with preservation of notices.
 
-Attribution line you can copy:
-> Extending ATT&CK: HPH DICOM PoC © Jared P. Quinn — used under CC BY 4.0 / Apache-2.0 (as applicable).
+Attribution line you can copy: Extending ATT&CK: HPH DICOM PoC © Jared P. Quinn — used under CC BY 4.0 / Apache-2.0 (as applicable).
 
 --------------------------------
 INTEGRITY CHECK
@@ -159,8 +158,8 @@ navigator_hph_dicom.json SHA-256: 9806D6285070312400E03407391947770AF16E58BEE2A8
 --------------------------------
 VERSION HISTORY
 
-- **0.1.0 — 2025-09-12**  
-  First public PoC: Workbench collection (`workbench_hph_dicom.json`) and Navigator layer (`navigator_hph_dicom.json`) for CVE-2025-35975; includes sub-technique QNTK-T1204.121, mitigation QNTK-M1201, campaign QNTK-C1201, analytic QNTK-A1201, and links/triage note.
+**0.1.0 — 2025-09-12**  
+First public PoC: Workbench collection (`workbench_hph_dicom.json`) and Navigator layer (`navigator_hph_dicom.json`) for CVE-2025-35975; includes sub-technique QNTK-T1204.121, mitigation QNTK-M1201, campaign QNTK-C1201, analytic QNTK-A1201, and links/triage note.
 
-- **0.1.1 — 2025-09-12**  
-  File renames, README polish, integrity hashes, license added.
+**0.1.1 — 2025-09-12**  
+File renames, README polish, integrity hashes, license added.
