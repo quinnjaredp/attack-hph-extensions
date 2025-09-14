@@ -1,0 +1,44 @@
+{
+  "name": "Custom HPH DICOM Layer",
+  "version": "4.3",
+  "domain": "custom-quinntech",
+  "description": "Self-contained layer for QuinnTech custom sub-technique.",
+  "techniques": [
+    {
+      "techniqueID": "QNTK-T1204.121",
+      "tactic": "execution",
+      "score": 1,
+      "comment": "Custom sub-technique for User Execution involving DICOM abuse in HPH sector.",
+      "enabled": true,
+      "metadata": [],
+      "color": "#ff6666"
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#ff6666"
+    ],
+    "minValue": 0,
+    "maxValue": 1
+  },
+  "legendItems": [],
+  "metadata": [],
+  "filters": {
+    "stages": [
+      "act"
+    ],
+    "platforms": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ]
+  },
+  "layout": {
+    "layout": "side",
+    "showID": false,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false
+  }
+}

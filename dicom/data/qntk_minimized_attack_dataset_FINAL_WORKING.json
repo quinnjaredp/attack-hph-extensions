@@ -1,0 +1,144 @@
+{
+  "type": "bundle",
+  "id": "bundle--qntk-minimized-dataset-v17",
+  "objects": [
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--2ac2d07e-865f-4dce-8cc1-e8c713799798",
+      "created": "2025-09-08T22:06:23.322Z",
+      "created_by_ref": "identity--8f301b50-3ebf-4878-81cc-f98b6302ccbc",
+      "revoked": false,
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "url": "https://attack.mitre.org/techniques/QNTK-T1204/121",
+          "external_id": "QNTK-T1204.121"
+        },
+        {
+          "source_name": "CISA-FBI-HHS AA20-302A",
+          "description": "CISA; FBI; HHS. (2020, November 2). Ransomware Activity Targeting the Healthcare and Public Health Sector. Retrieved September 9, 2025.",
+          "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-302a"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--f0227d83-8fdd-46c7-a799-235972cb6ee1",
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9",
+        "marking-definition--9098136b-957d-46fb-9446-65f5c06bcf90"
+      ],
+      "modified": "2025-09-09T19:08:56.550Z",
+      "name": "Malicious Healthcare File",
+      "description": "Adversaries may rely upon a user opening a malicious healthcare file in order to gain execution. Users (e.g., clinicians, technologists, support staff, etc.) may be socially engineered to open or import a file that leads to code execution. This action maybe observed as follow-on behavior from [Spearphishing Attachment](https://attack.mitre.org/techniques/T1566/001), or delivery via shared repositories and clinical workflows.\n\nHealthcare environments frequently treat clinical files as \u201cknown-good\u201d, and carve out exceptions in AV/EDR and content gateways to preserve care delivery (e.g., scan exclusions on PACS drop folders and viewer processes). This implicit trust reduces telemetry and creates blind spots that adversaries can exploit, making sector-specific files an appealing execution vehicle.\n\nAdversaries may use several types of healthcare-specific files that require a user or workflow to open/ingest them, including: DICOM images (.dcm) and study bundles (e.g., DICOMDIR/archives), viewer project/session files, clinical document formats (e.g., C-CDA/FHIR XML/JSON), ECG/waveform formats, HL7 messages (.hl7, often plain-text pipe-delimited), and vendor-proprietary clinical files. Opening or importing these artifacts can exploit file-format quirks (e.g., preambles) or parser vulnerabilities in viewers, PACS clients, or clinical tooling - resulting in memory corruption or code execution. Attackers may employ [Masquerading](https://attack.mitre.org/techniques/T1036) and [Obfuscated Files or Information](https://attack.mitre.org/techniques/T1027) (e.g., familiar patient/study naming or password-protected archives with \u201chow-to-open\u201d instructions) to increase the likelihood of successful execution.\n\nWhile Malicious Healthcare File may occur shortly after Initial Access, it may also occur at other phases of an intrusion. For example, when an adversary places a crafted study in a shared directory, imaging workstation inbox, or PACS/RIS \u201cwatch folder\u201d - hoping that a user or automated import pipeline will open or ingest it.\n\nRecent federal guidance documents hospital-targeted ransomware campaigns that rely on user-initiated execution, underscoring this sub-technique\u2019s relevance to HPH environments (Citation: CISA-FBI-HHS AA20-302A).",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "execution"
+        }
+      ],
+      "x_mitre_attack_spec_version": "3.3.0",
+      "x_mitre_contributors": [
+        "QuinnTech"
+      ],
+      "x_mitre_deprecated": false,
+      "x_mitre_detection": "Monitor the execution and command-line arguments of clinical applications that require user interaction or automated ingest (e.g., imaging viewers and PACS/RIS/interface-engine utilities). Treat the opening/importing of sector-specific file types as a detection pivot and correlate follow-on activity from the same process/user.\n\nEndpoint and network sensors can detect malicious events once a clinical file is opened - for example, a viewer or ingest service making unexpected outbound connections or spawning a scripting shell/LOLBIN (e.g., cmd.exe, powershell.exe, wscript, mshta, rundll32) shortly after a study is opened. Where EDR exclusions exist for clinical apps or \u201cwatch folders,\u201d rely on application/queue telemetry and file-structure inspection.\n\nHeuristics useful in healthcare environments include:\n\n\u2022 File/Metadata Checks: verify format structure; for DICOM, confirm \u201cDICM\u201d at offset 128 and flag executable headers (PE/ELF) in the preamble, malformed element lengths, suspicious/mismatched transfer syntaxes, or unusual/private tags.\n\n\u2022 Application/Queue Health: viewer/PACS crashes or parser exceptions; ingest retries/aborts; sudden growth of interface-engine/PACS queues; increased latency between modality ingest and worklist availability.\n\n\u2022 Process Lineage: clinical apps writing new executables/DLLs or spawning child processes shortly after file open/import; unusual module loads from temp/user-profile paths.\n\n\u2022 Network Timing/Context: DNS or egress from viewer/PACS hosts immediately following a study open/import; connections to destinations not typical for imaging workflows.\n\nCorrelate detections with the specific file hash/StudyInstanceUID, the user/system that opened/imported it, and the source path (email attachment, shared drive, removable media, or PACS/interface-engine drop location) to support rapid triage and hunting.\n",
+      "x_mitre_domains": [
+        "enterprise-attack"
+      ],
+      "x_mitre_is_subtechnique": true,
+      "x_mitre_modified_by_ref": "identity--3cea4611-2c73-4e4b-9925-19a329b0c8b2",
+      "x_mitre_platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "x_mitre_version": "0.1",
+      "x_mitre_data_sources": [],
+      "x_mitre_remote_support": false,
+      "x_mitre_system_requirements": [
+        "Endpoint with a clinical viewer or ingest service that opens sector-specific files (e.g., DICOM); a vulnerable/misconfigured parser or pre-patch build; a permitted delivery path that causes a user or local workflow to open/import the file; no upstream normalization removing unsafe structures; execution occurs in user context (no admin required)."
+      ],
+      "x_mitre_statement": "Copyright \u00a9 2025 QuinnTech (Jared P. Quinn). Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)."
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--70e14601-8ecb-4d0e-94b5-3f6173376279",
+      "created": "2025-09-08T22:06:23.172Z",
+      "created_by_ref": "identity--8f301b50-3ebf-4878-81cc-f98b6302ccbc",
+      "revoked": false,
+      "external_references": [],
+      "object_marking_refs": [
+        "marking-definition--9098136b-957d-46fb-9446-65f5c06bcf90"
+      ],
+      "modified": "2025-09-08T22:06:23.172Z",
+      "relationship_type": "subtechnique-of",
+      "source_ref": "attack-pattern--2ac2d07e-865f-4dce-8cc1-e8c713799798",
+      "target_ref": "attack-pattern--8c32eb4d-805f-4fc5-bf60-c4d476c131b5",
+      "x_mitre_modified_by_ref": "identity--3cea4611-2c73-4e4b-9925-19a329b0c8b2",
+      "x_mitre_deprecated": false,
+      "x_mitre_attack_spec_version": "3.3.0",
+      "x_mitre_contributors": [
+        "QuinnTech"
+      ],
+      "x_mitre_statement": "Copyright \u00a9 2025 QuinnTech (Jared P. Quinn). Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)."
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--19eaf68b-f233-41c2-aef8-c4874038aaca",
+      "created": "2025-09-09T18:28:08.473Z",
+      "created_by_ref": "identity--8f301b50-3ebf-4878-81cc-f98b6302ccbc",
+      "revoked": false,
+      "external_references": [],
+      "object_marking_refs": [
+        "marking-definition--f0227d83-8fdd-46c7-a799-235972cb6ee1",
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9",
+        "marking-definition--9098136b-957d-46fb-9446-65f5c06bcf90"
+      ],
+      "modified": "2025-09-09T18:28:08.473Z",
+      "description": "This asset represents the endpoint where the sub-technique is realized: a radiology viewer host that opens/ingests clinical files from PACS watch folders, shares, or email. A booby-trapped DICOM (or similar sector file) can trigger a viewer/parser flaw on open, leading to user-context execution and potential child-process/network activity. Typical risk factors include .dcm file association to the viewer and reduced EDR coverage for clinical apps.",
+      "relationship_type": "targets",
+      "source_ref": "attack-pattern--2ac2d07e-865f-4dce-8cc1-e8c713799798",
+      "target_ref": "x-mitre-asset--a362c770-b774-4d56-a3f2-f5b7a17cad7b",
+      "x_mitre_modified_by_ref": "identity--3cea4611-2c73-4e4b-9925-19a329b0c8b2",
+      "x_mitre_deprecated": false,
+      "x_mitre_attack_spec_version": "3.3.0",
+      "x_mitre_contributors": [
+        "QuinnTech"
+      ],
+      "x_mitre_statement": "Copyright \u00a9 2025 QuinnTech (Jared P. Quinn). Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)."
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8f301b50-3ebf-4878-81cc-f98b6302ccbc",
+      "created": "2025-09-14T01:42:40Z",
+      "modified": "2025-09-14T01:42:40Z",
+      "name": "QuinnTech",
+      "description": "QuinnTech (Jared P. Quinn) \u2013 author and publisher of this collection.",
+      "identity_class": "organization",
+      "sectors": [
+        "technology"
+      ],
+      "contact_information": "https://www.linkedin.com/in/jaredpquinn/",
+      "x_mitre_statement": "Copyright \u00a9 2025 QuinnTech (Jared P. Quinn). Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).",
+      "created_by_ref": "identity--8f301b50-3ebf-4878-81cc-f98b6302ccbc",
+      "object_marking_refs": [
+        "marking-definition--9098136b-957d-46fb-9446-65f5c06bcf90"
+      ]
+    },
+    {
+      "type": "marking-definition",
+      "spec_version": "2.1",
+      "id": "marking-definition--9098136b-957d-46fb-9446-65f5c06bcf90",
+      "created": "2025-09-14T02:29:55Z",
+      "name": "QuinnTech Statement",
+      "definition_type": "statement",
+      "definition": {
+        "statement": "Copyright \u00a9 2025 QuinnTech (Jared P. Quinn). Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)."
+      }
+    }
+  ],
+  "domain": "qntk-attack",
+  "version": "QNTK Custom v1"
+}
